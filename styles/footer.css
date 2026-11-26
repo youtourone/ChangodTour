@@ -1,0 +1,239 @@
+/* --- RESET Y FUENTES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  /* Color de fondo de la página para que contraste con el footer */
+  background-color: #f4f5f7;
+}
+
+/* =========================================
+   ESTRUCTURA DEL FOOTER
+   ========================================= */
+.site-footer {
+  background-color: #fdf8e8; /* Amarillo muy pálido (crema) */
+  color: #1a1a1a;
+  position: relative;
+  padding-top: 80px; /* Espacio para que la ola no tape el contenido */
+}
+
+/* La Ola Superior (SVG) */
+.footer-wave {
+  position: absolute;
+  top: -1px; /* Truco para evitar líneas blancas */
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(
+    180deg
+  ); /* Gira la ola para que la curva mire hacia arriba */
+}
+
+.footer-wave svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px; /* Altura de la ola */
+}
+
+.footer-wave .shape-fill {
+  fill: #f8d26a; /* Color amarillo de la ola (un poco más oscuro que el fondo) */
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL (4 Columnas)
+   ========================================= */
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px 60px 20px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr; /* La 1 y 4 son más anchas */
+  gap: 40px;
+}
+
+/* --- Columna de la Marca (Logo) --- */
+.brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el logo y redes */
+  text-align: center;
+}
+
+.footer-logo {
+  max-width: 220px;
+  margin-bottom: 10px;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Redes Sociales */
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #2c3e8f; /* Azul oscuro del diseño */
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #f8d26a; /* Amarillo al pasar el mouse */
+}
+
+/* --- Enlaces (Site map y Relevant information) --- */
+.footer-heading {
+  color: #2c3e8f; /* Azul oscuro */
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #2c3e8f;
+}
+
+/* =========================================
+   FORMULARIO DE SUSCRIPCIÓN (Columna 4)
+   ========================================= */
+.newsletter-text {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 30px; /* Forma de píldora */
+  border: none;
+  background-color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02); /* Sombra sutil */
+}
+
+.input-group input::placeholder {
+  color: #888;
+}
+
+.btn-subscribe {
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #f8d26a; /* Borde amarillo */
+  background-color: transparent;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 5px;
+}
+
+.btn-subscribe:hover {
+  background-color: #f8d26a;
+  color: #fff; /* El texto se vuelve blanco al rellenarse */
+}
+
+/* =========================================
+   BARRA INFERIOR (Copyright)
+   ========================================= */
+.footer-bottom {
+  background-color: #f4f5f7; /* Gris muy claro */
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.footer-bottom strong {
+  color: #2c3e8f; /* Azul oscuro para el nombre de la empresa */
+}
+
+/* =========================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #f8d26a; /* Amarillo */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000; /* Siempre por encima de todo */
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO (Móviles y Tablets)
+   ========================================= */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr; /* 2 columnas en tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+    text-align: center; /* Todo centrado en móviles */
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    bottom: 20px;
+    right: 20px;
+  }
+}

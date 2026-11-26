@@ -1,0 +1,87 @@
+/* 1. Contenedor Principal (La imagen de fondo) */
+.hero-section {
+  background-size: cover; /* La imagen cubre todo el espacio */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat;
+
+  /* Altura de la sección (ajusta según necesites) */
+  height: 500px;
+  width: 100%;
+
+  /* Posicionamiento relativo para que los hijos se posicionen respecto a esto */
+  position: relative;
+
+  /* TRUCO: Un degradado oscuro de izquierda a derecha para que el texto resalte */
+  /* El rgba(0,0,0,0.7) es negro con 70% de opacidad */
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0, 20, 40, 0.8) 0%,
+      rgba(0, 20, 40, 0.2) 100%
+    ),
+    url("../img/avion.jpg");
+
+  /* Flexbox para centrar el contenido verticalmente */
+  display: flex;
+  align-items: center;
+}
+
+/* 2. Contenedor del Texto */
+.hero-content {
+  /* Posicionamiento absoluto para que flote sobre la imagen */
+  position: absolute;
+
+  /* Lo movemos a la izquierda (puedes ajustar el % o usar px) */
+  left: 10%;
+
+  /* Ancho máximo para que el texto no se expanda demasiado a la derecha */
+  max-width: 600px;
+
+  color: #ffffff; /* Texto blanco */
+  font-family: "Montserrat", sans-serif;
+  z-index: 10; /* Asegura que esté por encima de la imagen */
+}
+
+/* 3. Estilos de los Títulos */
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffc107; /* Color Amarillo del diseño */
+  margin-bottom: 5px;
+}
+
+/* El número es blanco y más grande */
+.hero-content h1 span {
+  display: block; /* Lo pone en una línea nueva */
+  font-size: 64px;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* 4. Estilos del Párrafo */
+.hero-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 20px 0 30px 0; /* Espacio arriba y abajo */
+  color: #f0f0f0;
+  max-width: 450px; /* Para que el texto haga salto de línea como en tu imagen */
+}
+
+/* 5. Estilos del Botón */
+.btn-search {
+  display: inline-block;
+  background-color: #ffc107; /* Fondo amarillo */
+  color: #000; /* Texto negro */
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 50px; /* Bordes muy redondeados (forma de píldora) */
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por el botón */
+.btn-search:hover {
+  background-color: #e0a800; /* Un amarillo un poco más oscuro */
+}

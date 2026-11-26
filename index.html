@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChagodTour</title>
+    <!-- Importamos la fuente Montserrat para un look moderno -->
+    <link rel="stylesheet" href="styles/fonts.css" />
+    <!-- Importamos iconos de FontAwesome para el usuario y la flecha -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- Poner esto -->
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/section1.css" />
+    <link rel="stylesheet" href="styles/section2.css" />
+    <link rel="stylesheet" href="styles/section3.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    `
+
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/metodos.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <!-- LOGO (Izquierda) -->
+        <div class="logo-container">
+          <!-- NOTA: Aquí debes poner la ruta real de tu imagen de logo -->
+          <img
+            src="img/logo/ChagodTour.png"
+            alt="ChagodTour Logo"
+            class="logo-img"
+          />
+        </div>
+
+        <!-- MENÚ (Derecha) -->
+        <ul class="nav-links">
+          <li><a href="#" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#">My bookings <i class="fa-solid fa-chevron-down"></i></a>
+          </li>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Jobs</a></li>
+
+          <!-- Selector de Idioma -->
+          <li class="lang-selector">
+            <img src="img/icons/gb.png" alt="UK Flag" class="flag-icon" />
+            <span>EN</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </li>
+
+          <!-- Icono de Usuario -->
+          <li class="user-icon">
+            <a href="#">
+              <i class="fa-regular fa-circle-user"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero-section">
+      <!-- Contenedor del texto y botón -->
+      <div class="hero-content">
+        <h1>Flight booking <br /><span id="factura"></span></h1>
+        <p>
+          Your trust inspires us to always offer you the best. We hope to see
+          you on your next adventure!
+        </p>
+        <a href="#" class="btn-search">Search another reservation</a>
+      </div>
+    </section>
+    <!-- ENVOLVEMOS TODO EN UN SECTION -->
+    <section class="main-container">
+      <!-- 1. Etiqueta Confirmed -->
+      <div class="status-container">
+        <div class="status-badge">
+          <i class="fa-solid fa-check"></i> Confirmed
+        </div>
+      </div>
+
+      <!-- 2. Caja de Advertencia (Amarilla) -->
+      <div class="warning-card">
+        <h2>Important: Reservation Payment</h2>
+        <p>
+          At the moment, we do not offer online payment methods. Please contact
+          one of our agents as soon as possible to complete the payment for your
+          reservation. We will be happy to assist you.
+        </p>
+        <div class="btn-container">
+          <button class="btn-contact">
+            <i class="fa-solid fa-headset"></i> Contact an agent
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Contenedor de Tarjetas de Vuelo -->
+      <!-- Contenedor de las dos tarjetas -->
+      <div class="flights-container">
+        <!-- ========================================== -->
+        <!-- TARJETA 1: IDA (SCU -> GEO)                -->
+        <!-- ========================================== -->
+        <div class="flight-card">
+          <div class="flight-info">
+            <!-- Origen -->
+            <div class="city-block">
+              <div class="city-code">SCU</div>
+              <div id="fecha_salida_scu" class="date"></div>
+              <div id="hora_salida_scu" class="time"></div>
+            </div>
+
+            <!-- Gráfico de la ruta (Línea y puntos) -->
+            <div class="route-graphic">
+              <div class="route-line">
+                <div class="dot dot-start"></div>
+                <div class="line"></div>
+                <div class="dot dot-stop"></div>
+                <div class="line"></div>
+                <div class="plane-icon">
+                  <i class="fa-solid fa-plane"></i>
+                </div>
+              </div>
+              <div class="stop-label">1 stop</div>
+            </div>
+
+            <!-- Destino -->
+            <div class="city-block">
+              <div class="city-code">GEO</div>
+              <div id="fecha_llegada_geo" class="date"></div>
+              <div id="hora_llegada_geo" class="time"></div>
+            </div>
+          </div>
+
+          <!-- Botón inferior -->
+          <div class="card-footer">
+            <button class="btn-details">View details</button>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TARJETA 2: VUELTA (GEO -> SCU)             -->
+        <!-- ========================================== -->
+        <div class="flight-card">
+          <div class="flight-info">
+            <!-- Origen -->
+            <div class="city-block">
+              <div class="city-code">GEO</div>
+              <div id="fecha_salida_geo" class="date"></div>
+              <div id="hora_salida_geo" class="time"></div>
+            </div>
+
+            <!-- Gráfico de la ruta (Línea y puntos) -->
+            <div class="route-graphic">
+              <div class="route-line">
+                <div class="dot dot-start"></div>
+                <div class="line"></div>
+                <div class="dot dot-stop"></div>
+                <div class="line"></div>
+                <div class="plane-icon">
+                  <i class="fa-solid fa-plane"></i>
+                </div>
+              </div>
+              <div class="stop-label">1 stop</div>
+            </div>
+
+            <!-- Destino -->
+            <div class="city-block">
+              <div class="city-code">SCU</div>
+              <div id="fecha_llegada_scu"  class="date"></div>
+              <div id="hora_llegada_scu" class="time"></div>
+            </div>
+          </div>
+
+          <!-- Botón inferior -->
+          <div class="card-footer">
+            <button class="btn-details">View details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contenedor principal de la sección -->
+    <section class="passengers-section">
+      <h2 class="section-title">Passengers</h2>
+
+      <!-- TARJETA DEL PASAJERO -->
+      <div class="passenger-card">
+        <!-- Nombre del pasajero -->
+        <h3 id="person" class="passenger-name"></h3>
+
+        <!-- Cuadrícula de datos (2 columnas) -->
+        <div class="passenger-details-grid">
+          <!-- Columna Izquierda -->
+          <div class="details-column">
+            <div class="detail-item">
+              <span class="detail-label">Passport:</span>
+              <span id="passport" class="detail-extra"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Category:</span>
+              <span id="category" class="detail-extra"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Email:</span>
+              <a id="email"
+                href="mailto:bustamanteedrialis89@gmail.com"
+                class="detail-value"
+                ></a
+              >
+            </div>
+          </div>
+
+          <!-- Columna Derecha -->
+          <div class="details-column">
+            <div class="detail-item">
+              <span class="detail-label">Nationality:</span>
+              <span id="nationality" class="detail-extra"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Gender:</span>
+              <span id="gender" class="detail-"></span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Phone:</span>
+              <a id="phone" href="tel:+5926756006" class="detail-value"></a>
+            </div>
+          </div>
+        </div>
+        <!-- Fin de la cuadrícula -->
+
+        <!-- Separador y Equipaje -->
+        <div class="luggage-section">
+          <h4 class="luggage-title">Luggage</h4>
+          <div class="luggage-badge">
+            <i class="fa-solid fa-suitcase-rolling"></i> Included 1x32 Kg.
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN DEL CÓDIGO QR -->
+      <div class="qr-container">
+        <!-- Nota: En un proyecto real, la imagen del QR vendría de una API o de tu servidor -->
+        <img
+          src="img/codigo-qr.png"
+          alt="Código QR de la reserva"
+          class="qr-image"
+        />
+      </div>
+    </section>
+    <section class="main-container">
+      <!-- 2. Caja de Advertencia (Amarilla) -->
+      <div class="warning-card">
+        <h2>¿Issues with your reservation?</h2>
+        <p>
+          If you encounter any issues or have questions regarding your
+          reservation, please don't hesitate to reach out. We're here to assist
+          you and ensure your experience is enjoyable.
+        </p>
+        <div class="btn-container">
+          <button class="btn-contact">
+            <i class="fa-solid fa-headset"></i> Contact an agent
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Envolvemos todo el footer en una etiqueta semántica -->
+    <footer class="site-footer">
+      <!-- La ola superior (SVG) -->
+      <div class="footer-wave">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- Contenido principal del footer -->
+      <div class="footer-content">
+        <!-- Columna 1: Logo y Redes -->
+        <div class="footer-col brand-col">
+          <!-- Nota: Reemplaza con tu logo real -->
+          <img
+            src="img/logo-footer.png"
+            alt="ChagodTour Logo"
+            class="footer-logo"
+          />
+          <p class="brand-subtitle">Jamaican Tour Operator</p>
+
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#"><i class="fa-solid fa-paper-plane"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Site Map -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Site map</h4>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Verify document</a></li>
+            <li><a href="#">Verify payment</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Relevant Information -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Relevant information</h4>
+          <ul class="footer-links">
+            <li><a href="#">Terms & conditions</a></li>
+            <li><a href="#">Cookies policies</a></li>
+            <li><a href="#">Privacy policies</a></li>
+            <li><a href="#">Return policies</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Formulario de Suscripción -->
+        <div class="footer-col newsletter-col">
+          <p class="newsletter-text">Stay up to date with Chagod Tour news.</p>
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="text" placeholder="Name *" required />
+            </div>
+            <div class="input-group">
+              <input type="email" placeholder="Email *" required />
+            </div>
+            <button type="submit" class="btn-subscribe">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Barra inferior de Copyright -->
+      <div class="footer-bottom">
+        <p>Powered by <strong>Chagod Software</strong></p>
+        <p>© 2023 CHAGOD TOUR JAMAICA LIMITED.</p>
+      </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="#" class="whatsapp-float">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <button id="abrir">Abrir popup</button>
+
+    <div
+      id="modal"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        style="
+          background: #fff;
+          padding: 20px;
+          margin: 100px auto;
+          width: 300px;
+        "
+      >
+        <p>Hola, soy un popup</p>
+        <button id="cerrar">Cerrar</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $("#abrir").on("click", function () {
+        $("#modal").show();
+      });
+
+      $("#cerrar").on("click", function () {
+        $("#modal").hide();
+      });
+    </script>
+  </body>
+</html>

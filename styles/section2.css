@@ -1,0 +1,384 @@
+
+
+/* =========================================
+   EL TRUCO PARA LA SEPARACIÓN LATERAL
+   ========================================= */
+.main-container {
+    max-width: 1100px; /* Ancho máximo del contenido */
+    margin: 0 auto;    /* Centra el contenido en la pantalla */
+    padding: 20px 0 40px;   /* ¡AQUÍ ESTÁ LA MAGIA! Da 40px de espacio a izquierda y derecha */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;         /* Separa la etiqueta, la caja amarilla y las tarjetas entre sí */
+}
+
+/* --- 1. ETIQUETA CONFIRMED --- */
+.status-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    width: 100%;
+}
+
+.status-badge {
+    background-color: #E2E2EC;
+    color: #1a1a1a;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- 2. CAJA AMARILLA DE ADVERTENCIA --- */
+.warning-card {
+    background-color: #FDF3D9; /* Amarillo muy pálido */
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.warning-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.warning-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    max-width: 780px; /* Para que el texto no se estire demasiado horizontalmente */
+    margin: 0 auto 25px auto; /* Centra el párrafo */
+    text-align: justify;
+}
+
+.btn-contact {
+    background-color: #FFB800; /* Amarillo fuerte */
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-contact:hover {
+    background-color: #e6a600;
+}
+
+/* --- 3. TARJETAS DE VUELO --- */
+.flights-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 30px; /* Separación entre las dos tarjetas */
+    width: 100%;
+}
+
+.flight-card {
+    background-color: rgb(235, 235, 235); /* Gris muy claro */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para que el borde redondeado corte bien el fondo del footer */
+}
+
+/* Parte superior de la tarjeta (Info y ruta) */
+.flight-info {
+    padding: 40px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.city-block {
+    text-align: center;
+    z-index: 2;
+}
+
+.city-code {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.city-block .date,
+.city-block .time {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* La línea con los puntos y el avión */
+.route-line {
+    flex-grow: 1; /* Ocupa todo el espacio central */
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    position: relative;
+    top: -10px; /* Ajuste fino para que quede a la altura de los códigos */
+}
+
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #000;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFB800; /* Amarillo */
+    border: 2px solid #FFB800;
+}
+
+.dot.start {
+    background-color: transparent; /* Punto hueco */
+}
+
+.dot.stop {
+    background-color: #fff; /* Punto hueco blanco */
+    border-color: #FFB800;
+    width: 8px;
+    height: 8px;
+}
+
+.plane-icon {
+    color: #FFB800;
+    font-size: 20px;
+    transform: rotate(45deg); /* Gira el avión */
+}
+
+/* Texto "1 stop" debajo de la línea */
+.stop-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -30px; /* Lo baja debajo de la línea */
+    font-size: 12px;
+    color: #FFB800;
+    font-weight: 500;
+}
+
+/* Parte inferior (Botón) */
+.card-footer {
+    background-color: #EBEBEB; /* Un gris ligeramente más oscuro */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ddd; /* Línea sutil divisoria */
+}
+
+.btn-details {
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 2px solid #FFB800;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-details:hover {
+    background-color: #FFB800;
+}
+
+/* =========================================
+   CONTENEDOR DE LAS TARJETAS
+   ========================================= */
+.flights-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 30px; /* Separación entre tarjeta y tarjeta */
+    width: 100%;
+    margin-top: 20px; /* Un poco de espacio extra si lo necesitas */
+}
+
+/* =========================================
+   ESTILO DE CADA TARJETA
+   ========================================= */
+.flight-card {
+    background-color: #EBEBEB; /* Gris claro exacto */
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para que el borde redondeado corte el fondo del footer */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03); /* Sombra muy sutil opcional */
+}
+
+/* Zona de información del vuelo (Arriba) */
+.flight-info {
+    padding: 35px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bloques de las ciudades (SCU y GEO) */
+.city-block {
+    text-align: center;
+    min-width: 80px; /* Asegura que no se aplasten */
+}
+
+.city-code {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.city-block .date,
+.city-block .time {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* =========================================
+   EL GRÁFICO DE LA RUTA (Línea, puntos, avión)
+   ========================================= */
+.route-graphic {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 15px;
+    top: -15px; /* Sube un poco el gráfico para alinearlo con los códigos de ciudad */
+}
+
+/* Contenedor de la línea negra */
+.route-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Las líneas negras */
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #000;
+}
+
+/* Los puntos de la ruta */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #F2F2F2; /* Mismo color que el fondo para el efecto hueco */
+    border: 2px solid #F5A623; /* Naranja/Amarillo */
+    position: relative;
+    z-index: 2; /* Para que quede por encima de la línea */
+}
+
+/* El primer punto (Origen) es relleno */
+.dot-start {
+    background-color: #F5A623;
+}
+
+/* El avión al final de la línea */
+.plane-icon {
+    color: #F5A623;
+    font-size: 18px;
+    transform: rotate(45deg); /* Gira el avión para que apunte a la derecha/arriba */
+    margin-left: -2px; /* Lo pega un poquito a la línea */
+    z-index: 2;
+}
+
+/* Texto "1 stop" */
+.stop-label {
+    position: absolute;
+    top: 20px; /* Lo baja justo debajo del punto central */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Ajuste fino para centrado perfecto */
+    font-size: 12px;
+    color: #F5A623; /* Mismo naranja */
+    font-weight: 600;
+}
+
+/* =========================================
+   FOOTER DE LA TARJETA (Zona del botón)
+   ========================================= */
+.card-footer {
+    background-color: rgb(235, 235, 235); /* Un tono de gris un poquito más oscuro */
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #E0E0E0;
+}
+
+.btn-details {
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 1.5px solid #F5A623; /* Borde naranja */
+    padding: 8px 35px;
+    border-radius: 50px; /* Forma de píldora */
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    background-color: #F5A623;
+    color: #fff;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO (Para móviles)
+   ========================================= */
+@media (max-width: 768px) {
+    .flights-container {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+    
+    .flight-info {
+        padding: 25px 15px;
+    }
+    
+    .city-code {
+        font-size: 22px;
+    }
+    
+    .route-graphic {
+        margin: 0 5px;
+    }
+}
+
+/* --- RESPONSIVE (Para móviles) --- */
+@media (max-width: 800px) {
+    .flights-container {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+    .main-container {
+        padding: 0 20px; /* Menos margen en móviles */
+    }
+    .route-line {
+        margin: 0 10px;
+    }
+    .city-code {
+        font-size: 22px;
+    }
+}

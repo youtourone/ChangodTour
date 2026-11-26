@@ -1,0 +1,152 @@
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+.passengers-section {
+    max-width: 1100px; /* Ancho máximo similar a tu imagen */
+    margin: 40px auto; /* Centrado horizontal */
+    padding: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   TARJETA DEL PASAJERO
+   ========================================= */
+.passenger-card {
+    background-color: rgb(243, 243, 243); /* Gris muy clarito */
+    width: 100%;
+    border-radius: 25px;
+    padding: 28px;
+    height: fit-content;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02); /* Sombra sutil opcional */
+}
+
+.passenger-name {
+    color: #F59E0B; /* Naranja/Dorado del diseño */
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   CUADRÍCULA DE DATOS (El reto de alineación)
+   ========================================= */
+.passenger-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 40px; /* 15px de espacio vertical, 40px horizontal */
+}
+
+/* El contenedor de cada columna */
+.details-column {
+    display: flex;
+    flex-direction: column; /* Apila los datos hacia abajo */
+    gap: 15px; /* Espacio vertical entre cada fila (Passport, Email, etc.) */
+}
+
+.detail-item {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el texto */
+    flex-wrap: wrap; /* Permite que el texto baje si es muy largo */
+    font-size: 15px;
+}
+
+.detail-label {
+    font-weight: 700; /* Negrita */
+    color: #1a1a1a;
+    margin-right: 8px; /* Espacio entre etiqueta y valor */
+}
+
+.detail-value {
+    color: #F59E0B; /* El texto naranja */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-weight: 500;
+}
+
+.detail-value:hover {
+    text-decoration: underline; /* Efecto al pasar el mouse por email o teléfono */
+}
+
+.detail-extra {
+    color: #666; /* Gris para los "(58 years)" */
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* =========================================
+   SEPARADOR Y EQUIPAJE
+   ========================================= */
+.luggage-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #E5E7EB; /* La línea gris divisoria */
+}
+
+.luggage-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+/* El "Badge" del equipaje */
+.luggage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #A5B4FC; /* Borde azul clarito */
+    border-radius: 50px; /* Forma de píldora */
+    color: #4F46E5; /* Texto azul oscuro */
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #EEF2FF; /* Fondo azul muy pálido (opcional) */
+}
+
+.luggage-badge i {
+    font-size: 14px;
+}
+
+/* =========================================
+   SECCIÓN DEL CÓDIGO QR
+   ========================================= */
+.qr-container {
+    display: flex;
+    justify-content: center; /* Centra el QR horizontalmente */
+    margin-top: 40px;
+}
+
+.qr-image {
+    width: 120px; /* Tamaño del QR */
+    height: 120px;
+    /* Si tu QR no tiene el logo en el medio, puedes ponerle un borde o fondo */
+    /* border-radius: 10px; */ 
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO (Para móviles)
+   ========================================= */
+@media (max-width: 600px) {
+    .passenger-details-grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+    
+    .passenger-card {
+        padding: 20px;
+    }
+    
+    .detail-item {
+        /* En móviles, alineamos las etiquetas arriba y el valor abajo si son muy largos */
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 2px;
+    }
+}
